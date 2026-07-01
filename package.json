@@ -1,0 +1,31 @@
+{
+  "name": "dronmedia-plazoleta51",
+  "version": "1.0.0",
+  "description": "Sitio web de Dronmedia Plazoleta51 - Gastronomía, Entretenimiento y Negocios en Barrio Palermo",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "echo 'Sitio estático - No necesita servidor de desarrollo'",
+    "build": "echo 'No hay proceso de compilación - Sitio HTML estático'",
+    "vercel-build": "echo 'Desplegando sitio estático en Vercel'",
+    "start": "echo 'Abre public/index.html en tu navegador'"
+  },
+  "keywords": [
+    "gastronomia",
+    "entretenimiento",
+    "negocios",
+    "plazoleta",
+    "sky51",
+    "dronmedia",
+    "barrio-palermo",
+    "bogota",
+    "restaurantes",
+    "eventos"
+  ],
+  "author": "Dronmedia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/dronmedia-plazoleta51"
+  },
+  "homepage": "https://dronmedia-plazoleta51.vercel.app"
+}
