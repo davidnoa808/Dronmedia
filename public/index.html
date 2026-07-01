@@ -35,7 +35,6 @@
         .media-slide.active { opacity: 1; animation: zoomCircularMedia 12s infinite alternate; }
         @keyframes zoomCircularMedia { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
         
-        /* ========== SUBTÍTULOS SIN FONDO - SOLO LETRAS BLANCAS ========== */
         .media-caption { 
             background: transparent;
             backdrop-filter: none;
@@ -308,7 +307,6 @@
         .video-counter { color: #3498db; }
         @media (max-width: 768px) { .video-grid, .photo-grid { grid-template-columns: 1fr; } }
 
-        /* ========== SECCIÓN VIDEOS PROMOCIONALES ========== */
         .promo-section { max-width: 1400px; margin: 60px auto; padding: 20px; }
         .promo-title { text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; background: linear-gradient(135deg, #fff, #ffd966); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 40px; letter-spacing: 2px; }
         .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -317,7 +315,6 @@
         .promo-item iframe { position: absolute; width: 100%; height: 100%; border: none; }
         .promo-item.fullscreen-promo { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; padding-bottom: 0; z-index: 9999; border-radius: 0; }
 
-        /* ========== SECCIÓN REDES SOCIALES ========== */
         .social-section { max-width: 1400px; margin: 60px auto; padding: 20px; }
         .social-title { text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; background: linear-gradient(135deg, #fff, #ffd966); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 40px; letter-spacing: 2px; }
         .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -325,7 +322,6 @@
         .social-item:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(255,217,102,0.3); }
         .social-item iframe { position: absolute; width: 100%; height: 100%; border: none; }
 
-        /* ========== GALERÍA RESPONSIVE CON LIGHTBOX ========== */
         .gallery-section { max-width: 1400px; margin: 60px auto; padding: 20px; }
         .gallery-title { text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; background: linear-gradient(135deg, #fff, #ffd966); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 40px; letter-spacing: 2px; }
         .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
@@ -343,7 +339,6 @@
         .gallery-item:hover .gallery-overlay { transform: translateY(0); }
         .gallery-overlay-text { color: #ffd966; font-weight: bold; font-size: 1.1rem; }
 
-        /* ========== LIGHTBOX CON FLECHAS - CORREGIDO ========== */
         .lightbox {
             display: none;
             position: fixed;
@@ -363,7 +358,6 @@
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            /* ← CORRECCIÓN: Eliminar cualquier filtro azul */
             filter: none !important;
             -webkit-filter: none !important;
         }
@@ -430,7 +424,6 @@
             .location-icon { font-size: 1.5rem; }
         }
 
-        /* ========== MENSAJE DE ERROR PARA VIDEOS ========== */
         .video-error-msg {
             position: absolute;
             top: 50%;
@@ -456,7 +449,6 @@
             z-index: 50;
         }
 
-        /* ========== BOTONES DE COMPARTIR POR SECCIÓN ========== */
         .section-share-btn {
             position: absolute;
             top: 10px;
@@ -644,14 +636,8 @@
 </div>
 
 <script>
-    // ============================================================
-    // CONFIGURACIÓN DE VOLUMEN - AJUSTA ESTE VALOR (0-100)
-    // ============================================================
-    const VIDEO_VOLUME = 20;  // ← CAMBIA ESTE VALOR: 0=silencio, 100=máximo
+    const VIDEO_VOLUME = 20;
     
-    // ============================================================
-    // YOUTUBE IFRAME PLAYER API - SIN API KEY NECESARIA
-    // ============================================================
     let youtubePlayer = null;
     let isYouTubeAPIReady = false;
     
@@ -660,9 +646,6 @@
         isYouTubeAPIReady = true;
     }
 
-    // ============================================================
-    // FUNCIÓN PARA COMPARTIR SECCIONES
-    // ============================================================
     function shareSection(sectionId, sectionName) {
         const url = window.location.href.split('#')[0] + '#' + sectionId;
         const text = `Mira ${sectionName} - Plazoleta Sky51`;
@@ -680,9 +663,6 @@
         }
     }
 
-    // ============================================================
-    // 1. BANNER CENTRAL: 23 imágenes con zoom + ANIMACIÓN LOGO
-    // ============================================================
     const mainSlides = [
         { type: 'img', src: 'img/fondo1.png', caption: 'Bienvenidos a un lugar imperdible', showLogo: true, captionDuration: 5 },
         { type: 'img', src: 'img/fondo2.png', caption: 'Existe un lugar donde la buena comida, la diversión y los mejores momentos se encuentran.', showLogo: false, captionDuration: 7 },
@@ -930,9 +910,6 @@
     buildMainSlides();
     startMainCarousel();
 
-    // ============================================================
-    // 2. ANIMACIONES DE PALABRAS CAYENDO
-    // ============================================================
     function animateFallingWords(elementId, phrasesArray, intervalSeconds = 30) {
         const container = document.getElementById(elementId);
         if (!container) return;
@@ -1003,9 +980,6 @@
     buildIncludeBlock();
     buildResultadosBlock();
 
-    // ============================================================
-    // 3. PASARELA DE COMIDAS
-    // ============================================================
     const foodImages = [];
     for (let i = 1; i <= 16; i++) {
         foodImages.push(`img/comida${i}.jpg`);
@@ -1042,9 +1016,6 @@
     }
     buildFoodSlider();
 
-    // ============================================================
-    // 4. VIDEOS PROMOCIONALES (5 VIDEOS) - CON AUDIO Y HD
-    // ============================================================
     const promoVideoIds = [
         'jVSsCHJ94eU',
         '9_9g27s7hTc',
@@ -1058,7 +1029,6 @@
         promoVideoIds.forEach((videoId, index) => {
             const item = document.createElement('div');
             item.className = 'promo-item';
-            // CON AUDIO y CALIDAD HD
             item.innerHTML = `<iframe 
                 src="https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=${videoId}&hd=1&quality=hd1080" 
                 allowfullscreen 
@@ -1075,9 +1045,6 @@
     }
     buildPromoVideos();
 
-    // ============================================================
-    // 5. VIDEOS ADICIONALES (5 VIDEOS) - CON AUDIO Y HD
-    // ============================================================
     const additionalVideoIds = [
         'jL7_BPol0ug',
         'WZjL6f60Jng',
@@ -1091,7 +1058,6 @@
         additionalVideoIds.forEach((videoId, index) => {
             const item = document.createElement('div');
             item.className = 'promo-item';
-            // CON AUDIO y CALIDAD HD
             item.innerHTML = `<iframe 
                 src="https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=${videoId}&hd=1&quality=hd1080" 
                 allowfullscreen 
@@ -1108,19 +1074,15 @@
     }
     buildAdditionalVideos();
 
-    // ============================================================
-    // 6. VIDEOS REDES SOCIALES (8 VIDEOS) - CON AUDIO Y HD
-    // ⚠️ REEMPLAZA ESTOS IDs CON TUS VIDEOS REALES
-    // ============================================================
     const socialVideoIds = [
-        'jL7_BPol0ug',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'k8YVLZutEo4',  // ← Reemplaza con ID real
-        'jL7_BPol0ug'   // ← Reemplaza con ID real
+        'jL7_BPol0ug',
+        'k8YVLZutEo4',
+        'k8YVLZutEo4',
+        'k8YVLZutEo4',
+        'k8YVLZutEo4',
+        'k8YVLZutEo4',
+        'k8YVLZutEo4',
+        'jL7_BPol0ug'
     ];
 
     function buildSocialVideos() {
@@ -1128,7 +1090,6 @@
         socialVideoIds.forEach((videoId) => {
             const item = document.createElement('div');
             item.className = 'social-item';
-            // CON AUDIO y CALIDAD HD
             item.innerHTML = `<iframe 
                 src="https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1&hd=1&quality=hd1080" 
                 allowfullscreen 
@@ -1140,9 +1101,6 @@
     }
     buildSocialVideos();
 
-    // ============================================================
-    // 7. GALERÍA DE IMÁGENES CON LIGHTBOX
-    // ============================================================
     let currentLightboxIndex = 0;
     const galleryImages = [];
     const galleryCaptions = [];
@@ -1178,11 +1136,9 @@
             overlay.className = 'gallery-overlay';
             overlay.innerHTML = `<div class="gallery-overlay-text">${captions[i-40] || 'Experiencia'}</div>`;
             
-            // Guardar datos para el lightbox
             galleryImages.push(`img/fondo${i}.png`);
             galleryCaptions.push(captions[i-40] || 'Experiencia');
             
-            // Click para abrir lightbox
             item.addEventListener('click', () => {
                 openLightbox(i - 40);
             });
@@ -1194,7 +1150,6 @@
     }
     buildGallery();
 
-    // Funciones del Lightbox
     function openLightbox(index) {
         currentLightboxIndex = index;
         const lightbox = document.getElementById('lightbox');
@@ -1204,12 +1159,12 @@
         lightboxImg.src = galleryImages[index];
         lightboxCaption.textContent = galleryCaptions[index];
         lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';  // Prevenir scroll
+        document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';  // Restaurar scroll
+        document.body.style.overflow = '';
     }
 
     function changeImage(direction) {
@@ -1220,7 +1175,6 @@
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxCaption = document.getElementById('lightboxCaption');
         
-        // Efecto de fade
         lightboxImg.style.opacity = '0';
         setTimeout(() => {
             lightboxImg.src = galleryImages[currentLightboxIndex];
@@ -1229,16 +1183,12 @@
         }, 200);
     }
 
-    // Cerrar lightbox con tecla ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') changeImage(-1);
         if (e.key === 'ArrowRight') changeImage(1);
     });
 
-    // ============================================================
-    // 8. INTERACCIONES CON WHATSAPP PREDEFINIDO
-    // ============================================================
     const whatsappMessage = "Disfruta de Plazoleta Sky 51";
     const whatsappLink = `https://wa.me/573241671212?text=${encodeURIComponent(whatsappMessage)}`;
     
@@ -1247,9 +1197,6 @@
     document.getElementById('facebookRow')?.addEventListener('click', () => window.open('https://facebook.com', '_blank'));
     document.getElementById('ubicacionClick')?.addEventListener('click', () => window.open('https://maps.google.com/?q=Barrio+Palermo+Colombia', '_blank'));
 
-    // ============================================================
-    // 9. SECUENCIA ACTIVATE (Modal con YouTube - CON AUDIO Y HD)
-    // ============================================================
     const sequence = [        
         { type: 'youtube', videoId: 'WZjL6f60Jng', caption: 'Barrio Palermo - Disfruta una propuesta gastronómica única', duration: 20 },
         { type: 'img', src: 'img/fondo50.png', caption: '"Bienvenidos a un lugar imperdible"', duration: 7 },
@@ -1292,7 +1239,6 @@
     function playYouTubeVideo(videoId) {
         console.log(`✅ Reproduciendo video YouTube: ${videoId}`);
         
-        // ← CORRECCIÓN: Ocultar explícitamente imagen y video ANTES de mostrar YouTube
         presImg.style.display = 'none';
         presVideo.style.display = 'none';
         presVideo.pause();
@@ -1312,7 +1258,7 @@
                 videoId: videoId,
                 playerVars: {
                     'autoplay': 1,
-                    'mute': 0,  // ← CON AUDIO
+                    'mute': 0,
                     'controls': 0,
                     'showinfo': 0,
                     'rel': 0,
@@ -1322,14 +1268,14 @@
                     'playsinline': 1,
                     'enablejsapi': 1,
                     'origin': window.location.origin || '*',
-                    'hd': 1,           // ← FORZAR HD
-                    'quality': 'hd1080'  // ← CALIDAD 1080p
+                    'hd': 1,
+                    'quality': 'hd1080'
                 },
                 events: {
                     'onReady': function(event) {
                         console.log(`✅ Player listo: ${videoId}`);
                         event.target.playVideo();
-                        event.target.setVolume(VIDEO_VOLUME);  // ← USAR VARIABLE CONFIGURABLE
+                        event.target.setVolume(VIDEO_VOLUME);
                         
                         const loadingMsg = presYoutube.querySelector('.video-loading');
                         if (loadingMsg) loadingMsg.remove();
@@ -1382,14 +1328,12 @@
         const presMedia = document.getElementById('presMedia');
         const presCaption = document.getElementById('presCaption');
         
-        // ← CORRECCIÓN: Limpiar contenido anterior
         presMedia.innerHTML = '';
         presCaption.innerHTML = '';
-        presCaption.style.display = 'none';  // ← OCULTAR subtítulo durante redes sociales
+        presCaption.style.display = 'none';
         
         showFallingSocialsAdvanced();
         
-        // Esperar a que terminen las redes sociales (5 segundos)
         setTimeout(() => {
             showClosingInfoWithWhatsApp();
         }, 5000);
@@ -1423,9 +1367,8 @@
         const presMedia = document.getElementById('presMedia');
         const presCaption = document.getElementById('presCaption');
         
-        // ← CORRECCIÓN: Mostrar subtítulo con información final
         presCaption.innerHTML = createCaptionLetterByLetter('¿Buscas el lugar perfecto para tu negocio?', 3);
-        presCaption.style.display = 'flex';  // ← MOSTRAR subtítulo
+        presCaption.style.display = 'flex';
         
         const infoContainer = document.createElement('div');
         infoContainer.className = 'final-info-container';
@@ -1591,13 +1534,11 @@
         }
         const item = sequence[index];
         
-        // ← CORRECCIÓN CRÍTICA: Ocultar TODO antes de mostrar el nuevo contenido
         presImg.style.display = 'none';
         presVideo.style.display = 'none';
         presVideo.pause();
         presYoutube.style.display = 'none';
         
-        // Solo mostrar subtítulo si NO es el final
         if (index < sequence.length - 1) {
             presCaption.innerHTML = createCaptionLetterByLetter(item.caption, 5);
             presCaption.style.display = 'flex';
@@ -1621,7 +1562,6 @@
     }
 
     function startPresentation() {
-        // ← CORRECCIÓN: Limpiar TODO antes de iniciar
         stopSequence();
         
         if (timeoutId) clearTimeout(timeoutId);
@@ -1630,7 +1570,7 @@
         currentSeqIndex = 0;
         
         presCaption.innerHTML = '';
-        presCaption.style.display = 'none';  // ← OCULTAR inicialmente
+        presCaption.style.display = 'none';
         presImg.style.display = 'none';
         presVideo.style.display = 'none';
         presYoutube.style.display = 'none';
@@ -1656,9 +1596,6 @@
         if (e.target === modal) closeModal();
     });
 
-    // ============================================================
-    // 10. BOTÓN COMPARTIR PRINCIPAL
-    // ============================================================
     document.getElementById('shareBtn').addEventListener('click', () => {
         const url = window.location.href;
         const text = "Disfruta de Plazoleta Sky 51 - Gastronomía, eventos y entretenimiento";
@@ -1676,9 +1613,6 @@
         }
     });
 
-    // ============================================================
-    // 11. CÓDIGO ORIGINAL DRONMEDIA
-    // ============================================================
     const MAX_VIDEOS = 3;
     let uploadedVideosCount = 0;
     const videoIds = ['tIiZBrDTrKQ', 'AZJPI2STir0', 'R3kalECFIII', 'BLB6MIb0B3E'];
